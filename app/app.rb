@@ -23,11 +23,7 @@ class Bookmark < Sinatra::Base
 
   get '/tags/' do
     tag = Tag.first(name: params[:name])
-    p params[:name]
-    p params
-    p tag
     @links = tag ? tag.links : []
-    p @links
     erb :index
   end
 
