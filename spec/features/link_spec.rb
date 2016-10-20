@@ -15,12 +15,28 @@ feature 'prints links' do
   end
 
     scenario 'allows user to filter links by tags' do
-      visit '/tags/bubbles'
-      expect(page.status_code).to eq(200)
+      visit '/links'
+      fill_in('name', :with => "bubbles")
+      click_button 'Filter'
+      #  expect(page.status_code).to eq(200)
        expect(page).not_to have_content('Makers Academy')
        expect(page).not_to have_content('Code.org')
        expect(page).to have_content('This is Zombocom')
        expect(page).to have_content('Bubble Bobble')
   end
+
+  # scenario 'allow user to filter links by multiple tag' do
+  #   visit '/links'
+  #   fill_in('name', :with => "bubbles")
+  #   click_button 'Filter'
+  #   fill_in('name', :with => "search")
+  #   click_button 'Filter'
+  #   expect(page.status_code).to eq(200)
+  #    expect(page).not_to have_content('Makers Academy')
+  #    expect(page).not_to have_content('Code.org')
+  #    expect(page).to have_content('Google')
+  #    expect(page).to have_content('This is Zombocom')
+  #    expect(page).to have_content('Bubble Bobble')
+  # end
 
 end

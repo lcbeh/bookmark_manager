@@ -15,14 +15,19 @@ class Bookmark < Sinatra::Base
 
   post '/links' do
     link = Link.create(url: params[:url], title: params[:title])
-    tag = Tag.first_or_create(name: params[:tags])
-    link.tags << tag
+    params[:tags].split.each do |tag|
+      p tag
+      label = Tag.create(name: tag)
+      p link.tags << label
+    end
+    # tag = Tag.first_or_create(name: params[:tags])
+
     link.save
     redirect '/links'
   end
 
   get '/tags/' do
-    tag = Tag.first(name: params[:name])
+    tag = Tag.all(name: params[:name])
     @links = tag ? tag.links : []
     erb :index
   end
