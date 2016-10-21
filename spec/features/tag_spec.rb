@@ -8,7 +8,7 @@ feature 'tags links' do
     fill_in 'tags', with: ('education school')
     click_button 'Submit'
     link = Link.first
-    expect(link.tags.map(&:name)).to include('education', 'school')
+    expect(link.tags.map(&:tag)).to include('education', 'school')
   end
 
 

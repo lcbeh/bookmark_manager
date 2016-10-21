@@ -11,6 +11,7 @@ gem "dm-migrations"
 gem "dm-transactions"
 gem "pg"
 gem 'rake'
+gem 'bcrypt'
 
 group :test do
   gem 'database_cleaner'
