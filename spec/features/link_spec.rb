@@ -16,7 +16,7 @@ feature 'prints links' do
 
     scenario 'allows user to filter links by tags' do
       visit '/links'
-      fill_in('name', :with => "bubbles")
+      fill_in('filter', :with => "bubbles")
       click_button 'Filter'
       #  expect(page.status_code).to eq(200)
        expect(page).not_to have_content('Makers Academy')
